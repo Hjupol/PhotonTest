@@ -27,16 +27,21 @@ public class PlayerController : MonoBehaviourPun
     //public int player2RemainingDashes;
 
     private Renderer pRend;
+    private TrailRenderer tRend;
     private Vector3 colorVector;
     private bool colorAssigned = false;
     private const byte COLOR_SET = 2;
 
+    Gradient gradient;
+    GradientColorKey[] colorKey;
+    GradientAlphaKey[] alphaKey;
 
 
     private void Awake()
     {
         initialDashes = player1RemainingDashes;
         pRend = GetComponent<Renderer>();
+        tRend = GetComponent<TrailRenderer>();
         colorAssigned = false;
 
         //if (base.photonView.IsMine)
@@ -58,6 +63,26 @@ public class PlayerController : MonoBehaviourPun
     private void RpcSetColor(Vector3 _colorVector)
     {
         pRend.material.color = new Color(_colorVector.x, _colorVector.y, _colorVector.z);
+
+        gradient = new Gradient();
+
+        // Populate the color keys at the relative time 0 and 1 (0 and 100%)
+        colorKey = new GradientColorKey[2];
+        colorKey[0].color = new Color(_colorVector.x, _colorVector.y, _colorVector.z);
+        colorKey[0].time = 0.0f;
+        colorKey[1].color = new Color(_colorVector.x, _colorVector.y, _colorVector.z);
+        colorKey[1].time = 1.0f;
+
+        // Populate the alpha  keys at relative time 0 and 1  (0 and 100%)
+        alphaKey = new GradientAlphaKey[2];
+        alphaKey[0].alpha = 1.0f;
+        alphaKey[0].time = 0.0f;
+        alphaKey[1].alpha = 0.0f;
+        alphaKey[1].time = 1.0f;
+
+        gradient.SetKeys(colorKey, alphaKey);
+
+        tRend.colorGradient = gradient;
 
         object[] datas = { colorVector.x, colorVector.y, colorVector.z };
         PhotonNetwork.RaiseEvent(COLOR_SET, datas, RaiseEventOptions.Default, SendOptions.SendUnreliable);
@@ -85,6 +110,25 @@ public class PlayerController : MonoBehaviourPun
             if (!base.photonView.IsMine &&!colorAssigned)
             {
                 pRend.material.color = new Color(r, g, b, 1f);
+
+                gradient = new Gradient();
+
+                // Populate the color keys at the relative time 0 and 1 (0 and 100%)
+                colorKey = new GradientColorKey[2];
+                colorKey[0].color = new Color(r, g, b);
+                colorKey[0].time = 0.0f;
+                colorKey[1].color = new Color(r, g, b);
+                colorKey[1].time = 1.0f;
+
+                // Populate the alpha  keys at relative time 0 and 1  (0 and 100%)
+                alphaKey = new GradientAlphaKey[2];
+                alphaKey[0].alpha = 1.0f;
+                alphaKey[0].time = 0.0f;
+                alphaKey[1].alpha = 0.0f;
+                alphaKey[1].time = 1.0f;
+
+                gradient.SetKeys(colorKey, alphaKey);
+                tRend.colorGradient = gradient;
                 colorAssigned = true;
             }
         }
