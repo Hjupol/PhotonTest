@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class BallController : MonoBehaviourPunCallbacks
 {
+    private void Start()
+    {
+        //PhotonNetwork.IsMessageQueueRunning = true;
+    }
+
     [PunRPC]
     void OnTriggerEnter(Collider other)
     {
@@ -26,7 +31,10 @@ public class BallController : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(1.5f);
         //SceneManager.LoadScene(1);
-        RestartLevel();
+        photonView.RPC("RestartLevel", RpcTarget.Others);
+        yield return null;
+        PhotonNetwork.IsMessageQueueRunning = false;
+        PhotonNetwork.LoadLevel(2); //restart the game
     }
 
     IEnumerator DestroyBall()
@@ -40,7 +48,10 @@ public class BallController : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-                PhotonNetwork.LoadLevel(2);
+            //PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.IsMessageQueueRunning = false;
+            
+            PhotonNetwork.LoadLevel(2);
         }
     }
 }

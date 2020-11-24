@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviourPun
         PhotonNetwork.NetworkingClient.EventReceived -= NetworkingClient_EventReceived;
     }
 
+    
 
     private void NetworkingClient_EventReceived(EventData obj)
     {
@@ -137,8 +138,10 @@ public class PlayerController : MonoBehaviourPun
 
     void Start()
     {
+        
         if (base.photonView.IsMine)
         {
+            
             if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("RandomVector3"))
             {
                 colorVector = (Vector3)PhotonNetwork.LocalPlayer.CustomProperties["RandomVector3"];
@@ -232,9 +235,25 @@ public class PlayerController : MonoBehaviourPun
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                PhotonNetwork.LoadLevel(2);
+                StartCoroutine("Restart");
             }
         }
+    }
+
+    IEnumerator Restart()
+    {
+        
+        photonView.RPC("RestartLevel", RpcTarget.Others);
+        yield return null;
+        PhotonNetwork.IsMessageQueueRunning = false;
+        PhotonNetwork.LoadLevel(2); //restart the game
+    }
+
+    [PunRPC]
+    private void RestartLevel()
+    {
+        PhotonNetwork.LoadLevel(2);
+        
     }
 
     private void Jump()
