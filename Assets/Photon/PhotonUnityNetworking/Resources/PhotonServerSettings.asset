@@ -43,6 +43,10 @@ MonoBehaviour:
   - RestartCheck
   - RestartLevel
   - OnTriggerEnter
+  - P1Scores
+  - P2Scores
+  - RPC_P1Scores
+  - RPC_P2Scores
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

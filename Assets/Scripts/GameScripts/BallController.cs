@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class BallController : MonoBehaviourPunCallbacks
 {
+    ScoreManager scoreManager;
+
     private void Start()
     {
         //PhotonNetwork.IsMessageQueueRunning = true;
+        scoreManager = GameObject.Find("CanvasGame").GetComponent<ScoreManager>();
     }
 
     [PunRPC]
@@ -17,12 +20,14 @@ public class BallController : MonoBehaviourPunCallbacks
         {
             //Scoring
             Destroy(other.gameObject);
+            scoreManager.P1Scores();
             StartCoroutine("Restart");
         }
         else if (other.gameObject.CompareTag("Goal2"))
         {
             //Scoring
             Destroy(other.gameObject);
+            scoreManager.P2Scores();
             StartCoroutine("Restart");
         }
     }
