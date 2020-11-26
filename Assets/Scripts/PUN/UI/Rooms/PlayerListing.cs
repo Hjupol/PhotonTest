@@ -35,6 +35,13 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         int result = -1;
         if (player.CustomProperties.ContainsKey("RandomNumber"))
             result = (int)player.CustomProperties["RandomNumber"];
-        _text.text = /*result.ToString() + ", " +*/ player.NickName;
+        if (Ready)
+        {
+            _text.text ="Ready, " + player.NickName;
+        }
+        else
+        {
+            _text.text = "Not ready, " + player.NickName;
+        }
     }
 }
