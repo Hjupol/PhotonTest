@@ -9,6 +9,12 @@ using ExitGames.Client.Photon;
 
 public class ScoreManager : MonoBehaviourPun
 {
+
+    public static ScoreManager scoreManager;
+
+    
+
+
     public Text p1ScoreText;
     public Text p2ScoreText;
 
@@ -20,14 +26,21 @@ public class ScoreManager : MonoBehaviourPun
     private const byte P1_SCORE_EVENT = 4;
     private const byte P2_SCORE_EVENT = 5;
 
-
-
-    private void Awake()
+    void Awake()
     {
         p1Score = 0;
         p2Score = 0;
-        DontDestroyOnLoad(this);
+        if (scoreManager == null)
+        {
+            scoreManager = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     private void OnEnable()
     {
