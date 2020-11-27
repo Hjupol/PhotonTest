@@ -12,8 +12,10 @@ public class PlayerListing : MonoBehaviourPunCallbacks
     public Text _text;
 
     public Player Player { get; private set; }
-    public bool Ready = false;
-    
+
+    public bool Ready=false;
+
+
     public void SetPlayerInfo(Player player)
     {
         Player = player;
@@ -27,21 +29,32 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         {
             if (changedProps.ContainsKey("RandomNumber"))
                 SetPlayerText(targetPlayer);
+            if (changedProps.ContainsKey("Ready"))
+                SetPlayerText(targetPlayer);
+
         }
     }
 
-    private void SetPlayerText(Player player)
+    public void SetPlayerText(Player player)
     {
         int result = -1;
         if (player.CustomProperties.ContainsKey("RandomNumber"))
             result = (int)player.CustomProperties["RandomNumber"];
-        if (Ready)
+        if (player.IsMasterClient)
         {
-            _text.text ="Ready, " + player.NickName;
+            _text.text = "Host, " + player.NickName;
         }
         else
         {
-            _text.text = "Not ready, " + player.NickName;
+            if (Ready)
+            {
+                _text.text = "Ready, " + player.NickName;
+            }
+            else
+            {
+                _text.text = "Not ready, " + player.NickName;
+            }
         }
+        
     }
 }

@@ -147,6 +147,11 @@ public class PlayerController : MonoBehaviourPun
                 colorVector = (Vector3)PhotonNetwork.LocalPlayer.CustomProperties["RandomVector3"];
                 RpcSetColor(colorVector);
             }
+            else
+            {
+                colorVector = new Vector3(255,0,0);
+                RpcSetColor(colorVector);
+            }
             player1RemainingDashes = initialDashes;
             if (this != null)
             {

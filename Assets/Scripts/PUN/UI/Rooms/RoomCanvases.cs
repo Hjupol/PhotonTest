@@ -18,6 +18,8 @@ public class RoomCanvases : MonoBehaviour
     private void Awake()
     {
         FirstInitialize();
+        //ScoreManager.scoreManager.p1Score = 0;
+        //ScoreManager.scoreManager.p2Score = 0;
     }
 
     private void FirstInitialize()

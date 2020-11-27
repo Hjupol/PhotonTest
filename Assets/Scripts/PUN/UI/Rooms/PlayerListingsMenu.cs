@@ -44,14 +44,23 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
             if (_ready)
             {
                 _readyUpText.text = "Ready";
+
             }
             else
             {
                 _readyUpText.text = "Not ready";
             }
+            //UpdatePlayerInfo();
         }
         
     }
+
+    private void UpdatePlayerInfo()
+    {
+        for (int i = 0; i < _listings.Count; i++)
+           _listings[i].SetPlayerText(_listings[i].Player);
+    }
+
 
     public override void OnDisable()
     {
@@ -150,6 +159,7 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
         {
             SetReadyUp(!_ready);
             base.photonView.RPC("RPC_ChangeReadyState",RpcTarget.MasterClient,PhotonNetwork.LocalPlayer,_ready);
+            
             //base.photonView.RpcSecure("RPC_ChangeReadyState", RpcTarget.MasterClient,true, PhotonNetwork.LocalPlayer, _ready);
 
             //PhotonNetwork.RemoveRPCs()

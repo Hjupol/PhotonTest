@@ -9,6 +9,8 @@ public class RandomCustomPropertyGenerator : MonoBehaviour
     [SerializeField]
     private RawImage _image;
 
+    private bool _ready = false;
+
     private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
    
 
@@ -27,8 +29,26 @@ public class RandomCustomPropertyGenerator : MonoBehaviour
         //PhotonNetwork.LocalPlayer.CustomProperties = _myCustomProperties;
     }
 
+    private void SetReadyUp()
+    {
+        if (_ready)
+        {
+            _ready = false;
+        }
+        else
+        {
+            _ready = true;
+        }
+        _myCustomProperties["Ready"] = _ready;
+        PhotonNetwork.SetPlayerCustomProperties(_myCustomProperties);
+    }
 
-    public void OnClick_Button()
+    public void OnClickReady_Button()
+    {
+        SetReadyUp();
+    }
+
+    public void OnClickColor_Button()
     {
         SetCustomColor(); 
     }
