@@ -12,6 +12,7 @@ public class LeaveRoomMenu : MonoBehaviour
     {
         _roomCanvases = canvases;
     }
+
     public void OnClick_LeaveRoom()
     {
         PhotonNetwork.LeaveRoom(true);

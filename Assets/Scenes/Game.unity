@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 961fb56133a349b4eb60c4a9035117d7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 435c58b3f0b1cdd4bb15621a853e6eaa, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1398,8 +1398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -84.20001, y: 28.999}
-  m_SizeDelta: {x: 168.39941, y: 57.997925}
+  m_AnchoredPosition: {x: -103.8, y: 35.748}
+  m_SizeDelta: {x: 207.5899, y: 71.49539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1384392523
 MonoBehaviour:
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 435c58b3f0b1cdd4bb15621a853e6eaa, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1712,8 +1712,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 84.2, y: 29}
-  m_SizeDelta: {x: 168.39941, y: 57.997925}
+  m_AnchoredPosition: {x: 114.6, y: 39.5}
+  m_SizeDelta: {x: 229.24475, y: 78.95349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1941833574
 MonoBehaviour:
@@ -1735,7 +1735,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 435c58b3f0b1cdd4bb15621a853e6eaa, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1

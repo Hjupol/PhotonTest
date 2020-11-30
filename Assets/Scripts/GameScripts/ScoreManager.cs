@@ -50,6 +50,13 @@ public class ScoreManager : MonoBehaviourPun
     private void OnDisable()
     {
         PhotonNetwork.NetworkingClient.EventReceived -= NetworkingClient_EventReceived;
+        
+    }
+
+    public void ResetScore()
+    {
+        p1Score = 0;
+        p2Score = 0;
     }
 
     private void NetworkingClient_EventReceived(EventData obj)
@@ -66,6 +73,7 @@ public class ScoreManager : MonoBehaviourPun
         }
     }
 
+    
 
     void Update()
     {

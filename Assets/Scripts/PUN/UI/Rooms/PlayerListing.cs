@@ -40,21 +40,44 @@ public class PlayerListing : MonoBehaviourPunCallbacks
         int result = -1;
         if (player.CustomProperties.ContainsKey("RandomNumber"))
             result = (int)player.CustomProperties["RandomNumber"];
-        if (player.IsMasterClient)
+
+        if (PhotonNetwork.IsMasterClient)
         {
-            _text.text = "Host, " + player.NickName;
-        }
-        else
-        {
-            if (Ready)
+            if (player.IsMasterClient)
             {
-                _text.text = "Ready, " + player.NickName;
+                _text.text = "Host, " + player.NickName;
             }
             else
             {
-                _text.text = "Not ready, " + player.NickName;
+                if (Ready)
+                {
+                    _text.text = "Ready, " + player.NickName;
+                }
+                else
+                {
+                    _text.text = "Not ready, " + player.NickName;
+                }
             }
         }
+        else
+        {
+            if (player.IsMasterClient)
+            {
+                _text.text = "Host, " + player.NickName;
+            }
+            else
+            {
+                if (Ready)
+                {
+                    _text.text = player.NickName;
+                }
+                else
+                {
+                    _text.text = player.NickName;
+                }
+            }
+        }
+        
         
     }
 }

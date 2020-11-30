@@ -16,6 +16,7 @@ public class LeaveGame : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
+        ScoreManager.scoreManager.ResetScore();
         SceneManager.LoadScene(0);
 
         base.OnLeftRoom();
