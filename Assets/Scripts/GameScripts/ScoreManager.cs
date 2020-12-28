@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviourPun
     public static ScoreManager scoreManager;
 
     
-
+    //Thing commented can be used to score control
 
     public Text p1ScoreText;
     public Text p2ScoreText;
@@ -77,8 +77,8 @@ public class ScoreManager : MonoBehaviourPun
 
     void Update()
     {
-        p1ScoreText.text = "Player 1: " + p1Score.ToString();
-        p2ScoreText.text = "Player 2: " + p2Score.ToString();
+        //p1ScoreText.text = "Player 1: " + p1Score.ToString();
+        //p2ScoreText.text = "Player 2: " + p2Score.ToString();
     }
 
     
